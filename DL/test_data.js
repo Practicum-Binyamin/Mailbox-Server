@@ -1,7 +1,5 @@
 const userController = require('./controllers/user.controller')
 const userModel = require('./models/user.model')
-// const messageController = require('./controllers/message.controller')
-// const messageModel = require('./models/message.model')
 const chatController = require('./controllers/chat.controller')
 const chatModel = require('./models/chat.model')
 
@@ -42,52 +40,6 @@ async function go() {
     let ru1 = await userController.create(users[0])
     let ru2 = await userController.create(users[1])
     let ru3 = await userController.create(users[2])
-
-    // const msg = [{
-    //     from: ru2._id,
-    //     date: "2024-03-21T10:00:00.000Z",
-    //     content: "Greeting and you??",
-        
-    // }, {
-    //     from: ru1._id,
-    //     date: "2024-03-21T10:08:00.000Z",
-    //     content: "Fine, and you?",
-    // }, {
-    //     from: ru2._id,
-    //     date: "2024-03-21T10:24:00.000Z",
-    //     content: "Walla Sababa !!",
-    // },
-
-
-    // // --------------------------------------
-    // {
-    //     from: ru3._id,
-    //     date: "2024-03-20T09:30:00.000Z",
-    //     content: "Could you please send me the report?",
-    // },
-    // {
-    //     from: ru2._id,
-    //     date: "2024-03-20T10:45:00.000Z",
-    //     content: "whyyyyy?!?!",
-    // }, {
-        
-    //     from: ru3._id,
-    //     date: "2024-03-20T10:57:00.000Z",
-    //     content: "why whyyyyyyy?!?!",
-    // }, {
-    //     from: ru2._id,
-    //     date: "2024-03-21T07:30:00.000Z",
-    //     content: "Ok, i'm fired!",
-    // },
-
-    //     // -------------------------------------
-    // ]
-
-    // const msgDB = []
-    // for (m of msg) {
-    //     let mm = await messageController.create(m)
-    //     msgDB.push(mm)
-    // }
 
     const chats = [{
         subject: "Hello, how are you?",

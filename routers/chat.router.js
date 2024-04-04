@@ -13,4 +13,11 @@ router.get('/', async (req,res)=>{
     }
 })
 
+
+//  router.get('/inbox',___ ,  async (req,res)=>{})
+//  router.get('/inbox/read',___ ,  async (req,res)=>{})
+//  router.get('/sent',___ ,  async (req,res)=>{})
+//  router.get('/favorite',___ ,  async (req,res)=>{})
+
+
 module.exports = router

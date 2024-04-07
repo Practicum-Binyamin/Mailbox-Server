@@ -4,7 +4,7 @@ let chatService = require('../services/chat.service')
 
 router.get('/:flag', async (req, res) => {
     try {
-        let result = await getChats(req.body.user._id, req.params.flag)
+        let result = await chatService.getChats(req.body.user._id, req.params.flag)
         res.send(result)
     }
     catch (err) {

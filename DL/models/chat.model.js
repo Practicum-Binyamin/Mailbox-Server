@@ -22,7 +22,7 @@ const chatSchema = new mongoose.Schema({
 
     msg: [messageSchema],
 
-    to: [{
+    members: [{
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'user',
     }],

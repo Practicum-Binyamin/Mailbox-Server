@@ -10,8 +10,8 @@ async function read(filter) {
 async function readOne(filter, populate={}) {
 
     let data = await userModel.findOne({ ...filter, isActive: true })
-    if(populate.chats) data=await data.populate('chats.chat')
-    if(populate.users) data=await data.populate('chats.chat.to')
+    // if(populate.chats) data=await data.populate('chats.chat')
+    // if(populate.users) data=await data.populate('chats.chat.members')
     
     return data//.toObject()
 }
@@ -22,5 +22,19 @@ async function update(id, data) {
 async function del(id) {
     return await update(id, { isActive: false })
 }
+async function readByFlags(id, flags = [], populate = {}) {
 
-module.exports = { create, read, readOne, update, del }
+    let data = await userModel.findOne({ _id: id, isActive: true })
+    data.chats = data.chats.filter(c => flags.every(f => {
+        if (typeof f === 'object') {
+            let [[k, v]] = Object.entries(f)
+            return c[k] == v
+        }
+        return c[f]
+    }))
+    if (populate.chats) data = await data.populate('chats.chat')
+    if (populate.users) data = await data.populate({ path: 'chats.chat.members', select: "fullName avatar" })
+
+    return data.toObject()
+}
+module.exports = { create, read, readOne, update, del,readByFlags }

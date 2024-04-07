@@ -1,14 +1,19 @@
 const userController = require('../DL/controllers/user.controller')
-const userChatController = require('../DL/controllers/userChat.controller')
 const { Flags } = require('../utility')
 
-async function getInbox(userId) {
-    let { chats } = await userChatController.readByFlags(userId, [Flags.Inbox], { chats: true, users: true });
-    return chats
+let funcs = {
+    inbox: [Flags.Inbox],
+    notread: [Flags.NotRead],
+    send: [Flags.Sent],
+    favorite: [Flags.Favorite],
+    deleted: [Flags.Deleted],
+    draft: [Flags.Draft],
 }
-async function getFavorite(userId) {
-    let { chats } = await userChatController.readByFlags(userId, [Flags.Favorite], { chats: true, users: true });
+
+async function getChats(userId, flag) {
+    if(!funcs[flag]) throw ""
+    let { chats } = await userController.readByFlags(userId, funcs[flag], { chats: true, users: true });
     return chats
 }
 
-module.exports = { getInbox }
+module.exports = {getChats}

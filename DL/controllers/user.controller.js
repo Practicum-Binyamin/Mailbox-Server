@@ -22,6 +22,9 @@ async function update(id, data) {
 async function del(id) {
     return await update(id, { isActive: false })
 }
+async function save(user) {
+    return await user.save()
+}
 async function readByFlags(id, flags = [], populate = {}) {
 
     let data = await userModel.findOne({ _id: id, isActive: true })
@@ -34,7 +37,7 @@ async function readByFlags(id, flags = [], populate = {}) {
     }))
     if (populate.chats) data = await data.populate('chats.chat')
     if (populate.users) data = await data.populate({ path: 'chats.chat.members', select: "fullName avatar" })
-
+    
     return data.toObject()
 }
-module.exports = { create, read, readOne, update, del,readByFlags }
+module.exports = { create, read, readOne, update, del,save,readByFlags }

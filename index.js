@@ -1,6 +1,7 @@
 const 
 express = require('express'),
-app = express(); 
+app = express(),
+PORT = 3213; 
 
 require('dotenv').config()
 
@@ -16,6 +17,6 @@ app.all('*', auth)
 app.use('/chat',require('./routers/chat.router'))
 
 
-app.listen(3213,()=>console.log("##### Server is running #####"))
+app.listen(PORT,()=>console.log(`##### Server is running | ${PORT} #####`))
 
 

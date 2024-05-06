@@ -4,7 +4,7 @@ async function auth(req,res,next){
         // חילוץ מהבקשה >> Autherization Bearer
         // בדיקת תקינות טוקן
         // בדיקה מול הדאטה-בייס
-            req.body.user={_id:"660d66c5f3e17a763868202e"}
+            req.body.user={_id:"6613ba07b71ad0460cfa5c53"}
             next()
     }
     catch{
